@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Sanmayi Andaluri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .portfolio-page {
+      width: 100%;
+      max-width: 3508px;
+      height: 2480px;
+      margin: 40px auto;
+      background: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      page-break-after: always;
+    }
+    .portfolio-img {
+      width: 90%;
+      height: 60%;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #e0e7ef;
+      margin-bottom: 24px;
+    }
+    .portfolio-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #334155;
+    }
+    .portfolio-desc {
+      font-size: 1.3rem;
+      color: #64748b;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      max-width: 80%;
+    }
+    @media (max-width: 1200px) {
+      .portfolio-page { max-width: 100vw; height: auto; }
+      .portfolio-img { height: 260px; }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 py-8">
+  <nav class="flex justify-end px-8">
+    <a href="index.html" class="text-blue-600 hover:underline font-medium">← Back to Home</a>
+  </nav>
+  <div id="portfolio-container">
+    <!-- Portfolio pages will be generated here -->
+  </div>
+  <script>
+    const pages = [
+      {
+        title: "Portfolio Cover",
+        img: "https://placehold.co/3508x2480/4F46E5/FFFFFF?text=Architectural+Portfolio",
+        desc: "Sanmayi Andaluri\nArchitectural Portfolio\n2025"
+      },
+      {
+        title: "Table of Contents",
+        img: "https://placehold.co/3508x2480/334155/FFFFFF?text=Contents",
+        desc: "1. Introduction\n2. Personal Statement\n3-20. Projects"
+      },
+      {
+        title: "Introduction",
+        img: "https://placehold.co/3508x2480/E0E7EF/334155?text=Introduction",
+        desc: "Welcome to my architectural portfolio. This collection highlights selected works and design philosophies."
+      },
+      {
+        title: "Personal Statement",
+        img: "https://placehold.co/3508x2480/FFF7ED/334155?text=Personal+Statement",
+        desc: "I believe in designing spaces that inspire, sustain, and endure. My creative process blends concept, context, and craft."
+      },
+      // 16 project pages
+      ...Array.from({length: 16}, (_, i) => ({
+        title: `Project ${i+1}`,
+        img: `https://placehold.co/3508x2480/64748B/FFFFFF?text=Project+${i+1}`,
+        desc: `A4 Landscape Project Page ${i+1}\nProject description goes here.`
+      })),
+      {
+        title: "Thank You",
+        img: "https://placehold.co/3508x2480/4F46E5/FFFFFF?text=Thank+You",
+        desc: "Thank you for viewing my portfolio.\nContact: your.email@example.com"
+      }
+    ];
+    const container = document.getElementById("portfolio-container");
+    pages.forEach(page => {
+      const div = document.createElement("div");
+      div.className = "portfolio-page";
+      div.innerHTML = `
+        <div class="portfolio-title">${page.title}</div>
+        <img class="portfolio-img" src="${page.img}" alt="${page.title}">
+        <div class="portfolio-desc" style="white-space:pre-line">${page.desc}</div>
+      `;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>

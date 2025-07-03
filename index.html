@@ -85,10 +85,35 @@
       margin-top: 2em;
       box-shadow: 0 4px 22px rgba(70, 103, 215, 0.13);
       transition: background 0.2s, transform 0.2s;
+      margin-bottom: 1.2em;
+      display: block;
     }
     .cta-btn:hover {
       background: linear-gradient(90deg, #223355 60%, #72b5e6 100%);
       transform: translateY(-2px) scale(1.04);
+    }
+    .resume-corner {
+      position: absolute;
+      top: 36px;
+      right: 36px;
+      z-index: 3;
+      background: linear-gradient(90deg, #4767d7 60%, #87c5e5 100%);
+      color: #fff;
+      padding: 0.85em 2.2em;
+      font-size: 1.15em;
+      font-weight: 600;
+      border-radius: 0 0 0 18px;
+      box-shadow: 0 4px 16px rgba(70, 103, 215, 0.10);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.18s, color 0.18s, transform 0.18s;
+      cursor: pointer;
+    }
+    .resume-corner:hover {
+      background: linear-gradient(90deg, #223355 60%, #72b5e6 100%);
+      color: #fff;
+      transform: scale(1.04);
+      text-decoration: underline;
     }
     @media (max-width: 700px) {
       .center-container {
@@ -108,12 +133,20 @@
         font-size: 1.07em;
         padding: 0.9em 1.7em;
       }
+      .resume-corner {
+        font-size: 1em;
+        padding: 0.7em 1.2em;
+        top: 14px;
+        right: 10px;
+        border-radius: 0 0 0 12px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- To change the background image, replace 'background.jpg' with your file or use an online image URL -->
   <img src="background.jpg" alt="Background" class="background-image" id="bgimg">
+  <a class="resume-corner" href="resuedetails.html" target="_blank" title="View Resume">Resume</a>
   <div class="center-container">
     <h1>Sanmayi Andhaluri</h1>
     <h2>Architecture Portfolio</h2>

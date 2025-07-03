@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Architecture Undergraduate Resume</title>
+  <meta name="viewport" content="width=1123, initial-scale=1.0">
+  <style>
+    body {
+      width: 1123px;
+      min-height: 794px;
+      margin: 0 auto;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+    .resume-container {
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.13);
+      margin: 40px auto;
+      padding: 48px 64px;
+      width: 980px;
+      min-height: 700px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: row;
+    }
+    .left-col {
+      width: 32%;
+      padding-right: 32px;
+      border-right: 1.5px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .right-col {
+      width: 68%;
+      padding-left: 32px;
+    }
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 18px;
+      border: 2.5px solid #bbb;
+    }
+    .name {
+      font-size: 2.2em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 0.25em;
+    }
+    .role {
+      font-size: 1.2em;
+      color: #555;
+      margin-bottom: 1.2em;
+    }
+    .section-title {
+      font-size: 1.1em;
+      color: #333;
+      font-weight: bold;
+      margin: 1.7em 0 0.5em 0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      width: 100%;
+      text-align: left;
+    }
+    .contact-info, .languages {
+      font-size: 0.97em;
+      margin-bottom: 0.5em;
+      color: #444;
+      width: 100%;
+      text-align: left;
+    }
+    .languages-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      text-align: left;
+    }
+    .languages-list li {
+      margin: 0.2em 0;
+    }
+    .skills-space {
+      width: 100%;
+      min-height: 320px; /* doubled from previous 160px */
+      margin: 1.2em 0 1.2em 0;
+      border: 2px dashed #b2b2b2;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fafbfc;
+      position: relative;
+    }
+    .skills-placeholder-text {
+      color: #bbb;
+      font-size: 1.08em;
+      text-align: center;
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 1em;
+    }
+    .exp-edu-block {
+      margin-bottom: 1.3em;
+    }
+    .edu-title {
+      font-weight: bold;
+      font-size: 1.09em;
+      margin-bottom: 0.1em;
+      color: #183153;
+    }
+    .school {
+      color: #777;
+      font-size: 0.96em;
+      margin-bottom: 0.2em;
+    }
+    .edu-date {
+      color: #aaa;
+      font-size: 0.92em;
+      margin-bottom: 0.3em;
+    }
+    .edu-desc {
+      color: #444;
+      font-size: 0.97em;
+      margin-bottom: 0.2em;
+    }
+    .project-block {
+      margin-bottom: 1.2em;
+    }
+    .project-title {
+      font-weight: bold;
+      font-size: 1em;
+      color: #183153;
+    }
+    .project-desc {
+      color: #444;
+      font-size: 0.96em;
+    }
+    @media print {
+      body, .resume-container {
+        width: 1123px;
+        min-height: 794px;
+        background: #fff;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+      }
+      .resume-container {
+        padding: 32px 40px;
+      }
+      .skills-space {
+        background: none;
+      }
+      .skills-placeholder-text {
+        color: #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <!-- Left Column -->
+    <div class="left-col">
+      <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+      <div class="name">[Your Name]</div>
+      <div class="role">Undergraduate Architecture Student</div>
+      <div class="section-title">Contact</div>
+      <div class="contact-info">
+        Email: your.email@example.com<br>
+        Phone: +91-12345-67890<br>
+        LinkedIn: linkedin.com/in/yourprofile<br>
+        Portfolio: www.yourwebsite.com
+      </div>
+
+      <div class="section-title">Skills</div>
+      <div class="skills-space">
+        <div class="skills-placeholder-text">
+          (Leave this area blank for now. Insert a large image or a custom graphic with your skills here. <br><br>
+          <em>This area is now double in height to accommodate a bigger/longer skills chart or image.</em>)
+        </div>
+        <!-- Insert your skills image here later, e.g.:
+        <img src="your-skills-image.jpg" alt="Skills Chart" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
+        -->
+      </div>
+
+      <div class="section-title">Languages</div>
+      <ul class="languages-list">
+        <li>English (Fluent)</li>
+        <li>Hindi (Native)</li>
+        <li>Telugu (Conversational)</li>
+      </ul>
+    </div>
+    <!-- Right Column -->
+    <div class="right-col">
+      <div class="section-title">Profile</div>
+      <div style="margin-bottom:1em;">
+        Motivated undergraduate architecture student passionate about sustainable design, architectural history, and innovative problem-solving. Strong foundation in both hand-drafting and digital modelling, with experience in collaborative studio environments.
+      </div>
+      <div class="section-title">Education</div>
+      <div class="exp-edu-block">
+        <div class="edu-title">Bachelor of Architecture (B.Arch)</div>
+        <div class="school">ABC School of Architecture, Hyderabad</div>
+        <div class="edu-date">2021 – Present</div>
+        <div class="edu-desc">Currently pursuing undergraduate studies with coursework in design studios, history of architecture, and sustainable building practices.</div>
+      </div>
+      <div class="section-title">Projects</div>
+      <div class="project-block">
+        <div class="project-title">Urban Courtyard Housing</div>
+        <div class="project-desc">Studio design project focused on integrating communal spaces in high-density housing. Developed site analysis, design concepts, and detailed models.</div>
+      </div>
+      <div class="project-block">
+        <div class="project-title">Adaptive Reuse: Old Mill to Art Center</div>
+        <div class="project-desc">Proposed transformation of an abandoned mill into a community art hub. Included historic research, concept sketches, and presentation boards.</div>
+      </div>
+      <div class="section-title">Workshops & Extracurriculars</div>
+      <div class="exp-edu-block">
+        <div class="exp-title">Parametric Design Workshop</div>
+        <div class="exp-date">March 2024</div>
+        <div class="exp-desc">Hands-on workshop on parametric tools and digital fabrication methods.</div>
+      </div>
+      <div class="exp-edu-block">
+        <div class="exp-title">Member, Architecture Student Association</div>
+        <div class="exp-date">2022 – Present</div>
+        <div class="exp-desc">Organized guest lectures, site visits, and design competitions.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

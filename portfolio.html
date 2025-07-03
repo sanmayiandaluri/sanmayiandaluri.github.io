@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Projects - Sanmayi Andhaluri</title>
-  <meta name="viewport" content="width=1123, initial-scale=1">
+  <title>Architectural Portfolio Projects - Sanmayi Andhaluri</title>
+  <meta name="viewport" content="width=1200, initial-scale=1">
   <style>
     body {
       margin: 0;
@@ -39,22 +39,78 @@
       margin: 0.8em 0 0.1em 0;
       font-size: 2em;
       font-weight: 600;
+      text-align: center;
+    }
+    .project-desc {
+      color: #555;
+      font-size: 1.1em;
+      margin-bottom: 1em;
+      text-align: center;
+      max-width: 800px;
+    }
+    .img-form {
+      margin: 1em 0 2em 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .img-form input[type="url"] {
+      width: 380px;
+      max-width: 80vw;
+      padding: 0.7em;
+      font-size: 1em;
+      border: 1px solid #aaa;
+      border-radius: 7px;
+      background: #f7f8fb;
+    }
+    .img-form button {
+      padding: 0.7em 1.5em;
+      font-size: 1em;
+      background: #5577e6;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .img-form button:hover {
+      background: #3455bb;
+    }
+    .project-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 800px;
     }
     .project-image {
-      width: 100%;
-      max-width: 1123px;
+      display: block;
+      width: 1123px;
+      height: 794px;
+      max-width: 100vw;
+      max-height: 70vw;
       aspect-ratio: 1123 / 794;
-      height: auto;
-      border-radius: 12px;
       background: #eee;
+      border-radius: 12px;
       box-shadow: 0 1px 18px rgba(60,70,100,0.11);
       object-fit: contain;
-      cursor: pointer;
-      transition: box-shadow 0.15s;
-      margin-bottom: 1em;
+      margin: 0 auto;
     }
-    .project-image:hover {
-      box-shadow: 0 4px 32px rgba(70,103,215,0.18);
+    .remove-btn {
+      background: #e66565;
+      color: #fff;
+      border: none;
+      font-size: 1em;
+      border-radius: 6px;
+      padding: 0.3em 1em;
+      margin-left: 1em;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .remove-btn:hover {
+      background: #c33c3c;
     }
     .no-image {
       color: #aaa;
@@ -66,51 +122,142 @@
       width: 90%;
       text-align: center;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1200px) {
+      .project-image {
+        width: 98vw;
+        height: auto;
+        max-width: 100vw;
+        max-height: 80vw;
+      }
+      .project-image-container {
+        min-height: unset;
+      }
+    }
+    @media (max-width: 700px) {
+      .project-title {
+        font-size: 1.4em;
+      }
+      .img-form input[type="url"] {
+        width: 90vw;
+      }
       .project-image {
         width: 100vw;
         max-width: 100vw;
-        aspect-ratio: 1123 / 794;
         height: auto;
-      }
-      .portfolio-page {
-        width: 100vw;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Sanmayi Andhaluri - Projects Portfolio</h1>
+    <h1>Sanmayi Andhaluri - Architectural Portfolio</h1>
     <p style="color:#d3e0ff;font-size:1.1em;">
-      Images are managed through this repository.<br>
-      To add or update project images, upload them to <code>/images/projects/</code> and commit.<br>
-      Each image must be named <b>project1.jpg</b>, <b>project2.jpg</b>, ..., <b>project20.jpg</b>
+      To display your work, upload images to your GitHub repository under <code>/images/projects/</code>.<br/>
+      For each project, paste the direct raw GitHub image URL below.<br/>
+      Images are shown in true A4 landscape size (1123×794px at 96dpi).
     </p>
   </header>
-  <main id="portfolioMain">
-    <!-- JS will load images -->
-  </main>
+  <main id="portfolioMain"></main>
   <script>
-    const NUM_PAGES = 20;
-    const IMAGE_BASE = "images/projects/"; // relative to root
+    // Number of projects/pages
+    const NUM_PROJECTS = 20;
+    // Storage key for URLs
+    const STORAGE_KEY = 'portfolio_project_image_sources_v2';
 
-    const main = document.getElementById('portfolioMain');
-    for(let i=1; i<=NUM_PAGES; i++) {
-      const section = document.createElement('section');
-      section.className = 'portfolio-page';
-      const imgUrl = `${IMAGE_BASE}project${i}.jpg`;
-      section.innerHTML = `
-        <div class="project-title">Project ${i}</div>
-        <img src="${imgUrl}" class="project-image" alt="Project ${i} image"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-        <div class="no-image" style="display:none;">
-          No image found for Project ${i}.<br>
-          Add <b>project${i}.jpg</b> to the <code>images/projects/</code> folder in the repository!
-        </div>
+    // Try to load previously saved sources
+    let sources = {};
+    try {
+      sources = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch (e) { sources = {}; }
+
+    // Example descriptions (customize as needed)
+    const PROJECT_DESCRIPTIONS = [
+      "Site Analysis and Conceptual Massing",
+      "Sustainable Community Center Design",
+      "Urban Plaza and Landscape Integration",
+      "Adaptive Reuse: Old Mill to Art Gallery",
+      "Housing: Modular Living Units",
+      "Mixed-use Tower Proposal",
+      "Cultural Pavilion in Parklands",
+      "Riverfront Revitalization Plan",
+      "Library and Learning Hub",
+      "Student Hostel Architecture",
+      "Transit-Oriented Development",
+      "Modernist Villa Exploration",
+      "Low-income Housing Innovation",
+      "Public Market Hall Design",
+      "Museum: Form and Circulation Study",
+      "Design for Climatic Resilience",
+      "Sports Complex: Structure & Façade",
+      "Parametric Pavilion (Digital Fabrication)",
+      "Bridge & Urban Connectivity",
+      "Final Thesis Project Showcase"
+    ];
+
+    function renderProject(i) {
+      const projectNum = i + 1;
+      const description = PROJECT_DESCRIPTIONS[i] || `Project ${projectNum} Description`;
+      const imgSrc = sources[projectNum] || '';
+      return `
+        <section class="portfolio-page" data-pid="${projectNum}">
+          <div class="project-title">Project ${projectNum}</div>
+          <div class="project-desc">${description}</div>
+          <form class="img-form" onsubmit="return false;">
+            <label for="img-url-${projectNum}" style="display:none;">Image URL</label>
+            <input
+              type="url"
+              id="img-url-${projectNum}"
+              placeholder="Paste raw GitHub image URL here (e.g. https://raw.githubusercontent.com/...)"
+              value="${imgSrc ? imgSrc : ''}"
+              autocomplete="off"
+            />
+            <button type="button" onclick="updateImageSrc(${projectNum})">Set Image</button>
+            <button type="button" class="remove-btn" onclick="removeImageSrc(${projectNum})">Remove</button>
+          </form>
+          <div class="project-image-container">
+            ${
+              imgSrc
+              ? `<img src="${imgSrc}" class="project-image" alt="Project ${projectNum} image"
+                  onerror="this.style.display='none';document.getElementById('noimg-${projectNum}').style.display='block';"
+                >`
+              : `<div class="no-image" id="noimg-${projectNum}">
+                  No image set for Project ${projectNum}.<br>
+                  Upload your image to <code>/images/projects/</code> in your GitHub repo, then paste the raw file URL here.
+                </div>`
+            }
+          </div>
+        </section>
       `;
-      main.appendChild(section);
     }
+
+    function renderAll() {
+      let html = '';
+      for (let i = 0; i < NUM_PROJECTS; i++) {
+        html += renderProject(i);
+      }
+      document.getElementById('portfolioMain').innerHTML = html;
+    }
+
+    // Setup for image source setting/removal via input and localStorage
+    window.updateImageSrc = function(projectNum) {
+      const input = document.getElementById(`img-url-${projectNum}`);
+      const url = input.value.trim();
+      if (!url || !/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)$/i.test(url)) {
+        alert('Please enter a valid image URL ending in .jpg, .png, etc.');
+        return;
+      }
+      sources[projectNum] = url;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(sources));
+      renderAll();
+    };
+
+    window.removeImageSrc = function(projectNum) {
+      delete sources[projectNum];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(sources));
+      renderAll();
+    };
+
+    renderAll();
   </script>
 </body>
 </html>
